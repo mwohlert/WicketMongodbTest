@@ -1,0 +1,48 @@
+apply plugin: "java"
+apply plugin: "war"
+
+def tomcatHome = "/usr/share/tomcat8"
+def homePath = System.properties['user.home']
+
+repositories {
+   mavenCentral()
+   jcenter()
+}
+
+dependencies{
+    compile 'org.apache.wicket:wicket:6.+'
+    compile 'org.apache.wicket:wicket-extensions:6.+'
+    compile 'org.apache.wicket:wicket-spring:6.1.+'
+    compile 'org.apache.wicket:wicket-datetime:6.1.0'
+    compile 'org.apache.wicket:wicket-spring-annot:1.+'
+    compile 'javax.servlet:javax.servlet-api:3.+'
+    compile 'org.mongodb:mongo-java-driver:3.0.1'
+    compile 'org.mongodb:bson:3.0.1'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+task enableGradleDaemon<< {
+    def gradleDaemon = new File("${homePath}/.gradle/gradle.properties")
+    gradleDaemon.text = "org.gradle.daemon=true"
+}
+
+
+task deploylocal(dependsOn: build) << {
+    println "Copy from ${libsDir.getPath()} into ${tomcatHome}/webapps"
+    copy{
+        from libsDir
+        into "${tomcatHome}/webapps"
+        include '*.war'
+    }
+}
