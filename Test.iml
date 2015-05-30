@@ -7,7 +7,7 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/Test" />
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/Test" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -33,7 +33,8 @@
     <orderEntry type="library" exported="" name="commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" exported="" name="cglib:cglib-full:2.0.2" level="project" />
     <orderEntry type="library" exported="" name="org.apache.velocity:velocity:1.6.2" level="project" />
-    <orderEntry type="library" name="org.mongodb:mongo-java-driver:3.0.1" level="project" />
-    <orderEntry type="library" name="org.mongodb:bson:3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="org.mongodb:mongo-java-driver:3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="org.mongodb:bson:3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-fileupload:commons-fileupload:1.3.1" level="project" />
   </component>
 </module>
